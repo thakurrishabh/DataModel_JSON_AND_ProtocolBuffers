@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package assignment1;
+
+message RFW{
+	int32 RFW_ID = 1;
+
+        enum BenchmarkType{
+		DVDTESTING = 0; 
+		DVDTRAINING = 1;
+		NDBENCHTESTING = 2;
+		NDBENCHTRAINING = 3;
+	}
+
+        enum WorkloadMetric{
+		CPUUTILIZATIONAVERAGE = 0;
+		NETWORKINAVERAGE = 1;
+		NETWORKOUTAVERAGE = 2;
+		MEMORYUTILIZATIONAVERAGE = 3;
+	}
+
+	BenchmarkType Benchmark_Type= 2;
+	WorkloadMetric Workload_Metric= 3;
+        int32 Batch_Unit = 4;
+        int32 Batch_ID = 5;
+        int32 Batch_Size = 6;
+}
