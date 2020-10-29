@@ -1,38 +1,37 @@
-import Client_message_pb2
+import messaging_pb2
 import socket
 
 def Main():
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = ('3.96.144.25', 4000)
+    server_address = ('192.168.1.96', 4000)
 
     s.connect(server_address)
     try:
-        rfw= Client_message_pb2.RFW()
-        Benchmark_Types=[Client_message_pb2.RFW.DVDTESTING ,Client_message_pb2.RFW.DVDTRAINING ,Client_message_pb2.RFW.NDBENCHTESTING ,Client_message_pb2.RFW.NDBENCHTRAINING ]
-        Workload_Metrics=[Client_message_pb2.RFW.CPUUTILIZATIONAVERAGE ,Client_message_pb2.RFW.NETWORKINAVERAGE,Client_message_pb2.RFW.NETWORKOUTAVERAGE ,Client_message_pb2.RFW.MEMORYUTILIZATIONAVERAGE]
+        rfw= messaging_pb2.RFW()
+        Benchmark_Types=[messaging_pb2.RFW.DVDTESTING ,messaging_pb2.RFW.DVDTRAINING ,messaging_pb2.RFW.NDBENCHTESTING ,messaging_pb2.RFW.NDBENCHTRAINING ]
+        Workload_Metrics=[messaging_pb2.RFW.CPUUTILIZATIONAVERAGE ,messaging_pb2.RFW.NETWORKINAVERAGE,messaging_pb2.RFW.NETWORKOUTAVERAGE ,messaging_pb2.RFW.MEMORYUTILIZATIONAVERAGE]
 
-        rfw.RFW_ID =input('Enter RFW ID: ')
-        rfw.Benchmark_Type=input('Select Benchmark Type 1.DVD-testing 2.DVD-training 3.NDBench-testing 4.NDBench-training: ')
-        rfw.Workload_Metric=input('Select Workload Metric 1.CPUUtilization_Average 2.NetworkIn_Average 3.NetworkOut_Average 4.MemoryUtilization_Average: ')
-        rfw.Batch_Unit=input('Enter Batch unit: ')
-        rfw.Batch_ID=input('Enter Batch ID: ')
-        rfw.Batch_Size=input('Enter Batch Size: ')
-
-        RFW={
-            'RFW_ID':RFW_ID,
-            'Benchmark_Type':Benchmark_Types[int(Benchmark_Type)-1],
-            'Workload_Metric':Workload_Metrics[int(Workload_Metric)-1],
-            'Batch_Unit':Batch_Unit,
-            'Batch_ID':Batch_ID,
-            'Batch_Size':Batch_Size
-        }
+        rfw.RFW_ID =int(input('Enter RFW ID: '))
+        rfw.Benchmark_Type=Benchmark_Types[int(input('Select Benchmark Type 1.DVD-testing 2.DVD-training 3.NDBench-testing 4.NDBench-training: '))-1]
+        rfw.Workload_Metric=Workload_Metrics[int(input('Select Workload Metric 1.CPUUtilization_Average 2.NetworkIn_Average 3.NetworkOut_Average 4.MemoryUtilization_Average: '))-1]
+        rfw.Batch_Unit=int(input('Enter Batch unit: '))
+        rfw.Batch_ID=int(input('Enter Batch ID: '))
+        rfw.Batch_Size=int(input('Enter Batch Size: '))
 
         data= rfw.SerializeToString()
-        s.sendall(data.encode('utf-8'))
-        data = s.recv(65536)
-        data = data.decode('utf-8')
-        print("Received from server: " + data)
+
+        s.sendall(data)
+        rec_data = s.recv(65536)
+
+        rec_rfd= messaging_pb2.RFD()
+        rec_rfd.ParseFromString(rec_data)
+
+        print("Received from server: ")
+        print("RFW_ID: "+str(rec_rfd.RFW_ID))
+        print("last_Batch_ID: "+str(rec_rfd.last_Batch_ID))
+        print("datasamples: "+str(rec_rfd.datasamples))
+
 
     finally:
         s.close()

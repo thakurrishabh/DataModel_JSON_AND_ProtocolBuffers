@@ -1,3 +1,4 @@
+
 syntax = "proto3";
 
 package assignment1;
@@ -24,4 +25,10 @@ message RFW{
         int32 Batch_Unit = 4;
         int32 Batch_ID = 5;
         int32 Batch_Size = 6;
+}
+
+message RFD{
+	int32 RFW_ID = 1;
+	int32 last_Batch_ID = 2;
+	repeated int32 datasamples = 3;
 }
