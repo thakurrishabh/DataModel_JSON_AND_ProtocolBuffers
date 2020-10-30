@@ -4,7 +4,7 @@ import socket
 def Main():
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = ('192.168.1.96', 4000)
+    server_address = ('35.183.148.239', 4000)
 
     s.connect(server_address)
     try:
