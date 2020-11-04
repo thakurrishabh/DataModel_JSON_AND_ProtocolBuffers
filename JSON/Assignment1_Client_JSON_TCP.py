@@ -4,7 +4,7 @@ import socket
 def Main():
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = ('3.96.144.25', 4000)
+    server_address = ('3.96.205.25', 4000)
 
     s.connect(server_address)
     try:
@@ -29,10 +29,16 @@ def Main():
         }
 
         data= json.dumps(RFW)
+        with open('rfw.json', 'w') as file:
+            json.dump(data, file)
+
+
         s.sendall(data.encode('utf-8'))
         data = s.recv(65536)
         data = data.decode('utf-8')
         print("Received from server: " + data)
+        with open('rfd.json', 'w') as file:
+            json.dump(data, file)
 
     finally:
         s.close()

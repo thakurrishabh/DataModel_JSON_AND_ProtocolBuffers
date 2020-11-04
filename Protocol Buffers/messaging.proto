@@ -30,5 +30,5 @@ message RFW{
 message RFD{
 	int32 RFW_ID = 1;
 	int32 last_Batch_ID = 2;
-	repeated int32 datasamples = 3;
+	repeated double datasamples = 3;
 }

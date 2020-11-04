@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0fmessaging.proto\x12\x0b\x61ssignment1\"\x94\x03\n\x03RFW\x12\x0e\n\x06RFW_ID\x18\x01 \x01(\x05\x12\x36\n\x0e\x42\x65nchmark_Type\x18\x02 \x01(\x0e\x32\x1e.assignment1.RFW.BenchmarkType\x12\x38\n\x0fWorkload_Metric\x18\x03 \x01(\x0e\x32\x1f.assignment1.RFW.WorkloadMetric\x12\x12\n\nBatch_Unit\x18\x04 \x01(\x05\x12\x10\n\x08\x42\x61tch_ID\x18\x05 \x01(\x05\x12\x12\n\nBatch_Size\x18\x06 \x01(\x05\"Y\n\rBenchmarkType\x12\x0e\n\nDVDTESTING\x10\x00\x12\x0f\n\x0b\x44VDTRAINING\x10\x01\x12\x12\n\x0eNDBENCHTESTING\x10\x02\x12\x13\n\x0fNDBENCHTRAINING\x10\x03\"v\n\x0eWorkloadMetric\x12\x19\n\x15\x43PUUTILIZATIONAVERAGE\x10\x00\x12\x14\n\x10NETWORKINAVERAGE\x10\x01\x12\x15\n\x11NETWORKOUTAVERAGE\x10\x02\x12\x1c\n\x18MEMORYUTILIZATIONAVERAGE\x10\x03\"A\n\x03RFD\x12\x0e\n\x06RFW_ID\x18\x01 \x01(\x05\x12\x15\n\rlast_Batch_ID\x18\x02 \x01(\x05\x12\x13\n\x0b\x64\x61tasamples\x18\x03 \x03(\x05\x62\x06proto3'
+  serialized_pb=b'\n\x0fmessaging.proto\x12\x0b\x61ssignment1\"\x94\x03\n\x03RFW\x12\x0e\n\x06RFW_ID\x18\x01 \x01(\x05\x12\x36\n\x0e\x42\x65nchmark_Type\x18\x02 \x01(\x0e\x32\x1e.assignment1.RFW.BenchmarkType\x12\x38\n\x0fWorkload_Metric\x18\x03 \x01(\x0e\x32\x1f.assignment1.RFW.WorkloadMetric\x12\x12\n\nBatch_Unit\x18\x04 \x01(\x05\x12\x10\n\x08\x42\x61tch_ID\x18\x05 \x01(\x05\x12\x12\n\nBatch_Size\x18\x06 \x01(\x05\"Y\n\rBenchmarkType\x12\x0e\n\nDVDTESTING\x10\x00\x12\x0f\n\x0b\x44VDTRAINING\x10\x01\x12\x12\n\x0eNDBENCHTESTING\x10\x02\x12\x13\n\x0fNDBENCHTRAINING\x10\x03\"v\n\x0eWorkloadMetric\x12\x19\n\x15\x43PUUTILIZATIONAVERAGE\x10\x00\x12\x14\n\x10NETWORKINAVERAGE\x10\x01\x12\x15\n\x11NETWORKOUTAVERAGE\x10\x02\x12\x1c\n\x18MEMORYUTILIZATIONAVERAGE\x10\x03\"A\n\x03RFD\x12\x0e\n\x06RFW_ID\x18\x01 \x01(\x05\x12\x15\n\rlast_Batch_ID\x18\x02 \x01(\x05\x12\x13\n\x0b\x64\x61tasamples\x18\x03 \x03(\x01\x62\x06proto3'
 )
 
 
@@ -188,7 +188,7 @@ _RFD = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='datasamples', full_name='assignment1.RFD.datasamples', index=2,
-      number=3, type=5, cpp_type=1, label=3,
+      number=3, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
